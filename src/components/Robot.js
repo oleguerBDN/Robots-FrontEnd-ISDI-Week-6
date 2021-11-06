@@ -1,28 +1,27 @@
-const Robot = () => {
+const Robot = ({ robot, deleteClick, updateClick }) => {
   return (
     <div className="max-w-sm px-6 pt-6 pb-2 bg-white shadow-lg rounded-xl">
       <div className="relative">
-        <img
-          className="w-full rounded-xl"
-          src="https://lanetaneta.com/wp-content/uploads/2019/10/%C2%BFQuieres-125k-Solo-done-su-cara-a-algunos-robots.0337xh&resize=1200:*.jpeg"
-          alt="Colors"
-        />
+        <img className="w-full rounded-xl" src={robot.img} alt={robot.name} />
       </div>
       <h1 className="mt-4 text-3xl font-bold text-gray-800 cursor-pointer">
-        ROBOT 1
+        {robot.name}
       </h1>
       <div className="my-4">
         <div className="flex items-center space-x-1">
-          <p>Speed</p>
+          <p>Speed: {robot.features.speed}</p>
         </div>
         <div className="flex items-center space-x-1">
-          <p>Resistance</p>
+          <p>Resistance: {robot.features.resistance}</p>
         </div>
         <div className="flex items-center space-x-1">
-          <p>Birth</p>
+          <p>Birth Date: {robot.birth}</p>
         </div>
         <button className="w-full mt-4 text-xl text-white bg-red-800 shadow-lg py-1.5 rounded-xl">
           DELETE
+        </button>
+        <button className="w-full mt-4 text-xl text-white bg-blue-800 shadow-lg py-1.5 rounded-xl">
+          MODIFY
         </button>
       </div>
     </div>
