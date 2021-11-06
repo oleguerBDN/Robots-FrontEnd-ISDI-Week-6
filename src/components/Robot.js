@@ -15,7 +15,7 @@ const Robot = ({ robot, deleteClick, updateClick }) => {
           <p>Resistance: {robot.features.resistance}</p>
         </div>
         <div className="flex items-center space-x-1">
-          <p>Birth Date: {robot.birth}</p>
+          <p>Birth Date: {robot.features.birth}</p>
         </div>
         <button
           className="w-full mt-4 text-xl text-white bg-red-800 shadow-lg py-1.5 rounded-xl"
