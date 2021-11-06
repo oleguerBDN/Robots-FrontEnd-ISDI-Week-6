@@ -1,7 +1,7 @@
-import { response, rest } from "msw";
+import { rest } from "msw";
 
 export const handlers = [
-  rest.get(process.env.REACT_APP_ROBOTS_DB, async (req, res, ctx) => {
+  rest.get(process.env.REACT_APP_URL_API, async (req, res, ctx) => {
     const response = res(
       ctx.json([
         {
