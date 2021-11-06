@@ -10,7 +10,7 @@ describe("Given a robotReducer", () => {
           resistance: 8,
           birth: "2021-10-09T00:00:00.000Z",
         },
-        _id: "6185993022dd92661d3cfca6",
+        id: "6185993022dd92661d3cfca6",
         name: "pepe",
         img: "https://lanetaneta.com/wp-content/uploads/2019/10/%C2%BFQuieres-125k-Solo-done-su-cara-a-algunos-robots.0337xh&resize=1200:*.jpeg",
       };
@@ -29,7 +29,7 @@ describe("Given a robotReducer", () => {
           resistance: 8,
           birth: "2021-10-09T00:00:00.000Z",
         },
-        _id: "6185993022dd92661d3cfca6",
+        id: "6185993022dd92661d3cfca6",
         name: "pepe",
         img: "https://lanetaneta.com/wp-content/uploads/2019/10/%C2%BFQuieres-125k-Solo-done-su-cara-a-algunos-robots.0337xh&resize=1200:*.jpeg",
       };
