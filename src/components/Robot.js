@@ -19,13 +19,13 @@ const Robot = ({ robot, deleteClick, updateClick }) => {
         </div>
         <button
           className="w-full mt-4 text-xl text-white bg-red-800 shadow-lg py-1.5 rounded-xl"
-          onClick={() => deleteClick(robot._id)}
+          onClick={() => deleteClick(robot.id)}
         >
           DELETE
         </button>
         <button
           className="w-full mt-4 text-xl text-white bg-blue-800 shadow-lg py-1.5 rounded-xl"
-          onClick={() => updateClick(robot._id)}
+          onClick={() => updateClick(robot.id)}
         >
           MODIFY
         </button>
