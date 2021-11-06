@@ -1,7 +1,6 @@
 import {
   addRobotAction,
   deleteRobotAction,
-  loadRobotAction,
   loadRobotsAction,
 } from "../actions/actionCreators";
 import robotsReducer from "./robotsReducer";
@@ -61,7 +60,7 @@ describe("Given a robotsReducer", () => {
       expect(newRobots).toEqual(robots);
     });
   });
-  describe("When it receives an action type addRobot and robot", () => {
+  describe("When it receives an action type addRobot and robots", () => {
     test("Then it should return a new robots array with the new robot included", () => {
       const robot = {
         features: {
@@ -81,7 +80,7 @@ describe("Given a robotsReducer", () => {
       expect(robots.length + 1).toBe(newRobots.length);
     });
   });
-  describe("When it receives an action type deleteRobot and robot", () => {
+  describe("When it receives an action type deleteRobot and robots", () => {
     test("Then it should return a new robots array with the new robot NOT included", () => {
       const robot = {
         features: {
@@ -99,6 +98,14 @@ describe("Given a robotsReducer", () => {
 
       expect(newRobots).not.toContain(robot);
       expect(robots.length - 1).toBe(newRobots.length);
+    });
+  });
+  describe("When it receives an action type unexpected and robots array", () => {
+    test("Then it should return a new robots array", () => {
+      const action = { type: "whatever" };
+      const newRobots = robotsReducer(robots, action);
+
+      expect(newRobots).toEqual(robots);
     });
   });
 });
