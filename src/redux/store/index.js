@@ -1,7 +1,7 @@
+import thunk from "redux-thunk";
+import rootReducer from "../reducers";
 const { createStore, applyMiddleware } = require("redux");
 const { composeWithDevTools } = require("redux-devtools-extension");
-const thunk = require("redux-thunk");
-const rootReducer = require("../reducers");
 
 const configureStore = (initValues) => {
   return createStore(
