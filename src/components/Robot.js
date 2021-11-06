@@ -17,10 +17,16 @@ const Robot = ({ robot, deleteClick, updateClick }) => {
         <div className="flex items-center space-x-1">
           <p>Birth Date: {robot.birth}</p>
         </div>
-        <button className="w-full mt-4 text-xl text-white bg-red-800 shadow-lg py-1.5 rounded-xl">
+        <button
+          className="w-full mt-4 text-xl text-white bg-red-800 shadow-lg py-1.5 rounded-xl"
+          onClick={() => deleteClick(robot._id)}
+        >
           DELETE
         </button>
-        <button className="w-full mt-4 text-xl text-white bg-blue-800 shadow-lg py-1.5 rounded-xl">
+        <button
+          className="w-full mt-4 text-xl text-white bg-blue-800 shadow-lg py-1.5 rounded-xl"
+          onClick={() => updateClick(robot._id)}
+        >
           MODIFY
         </button>
       </div>
