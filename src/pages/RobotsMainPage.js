@@ -1,5 +1,5 @@
-import Form from "../Form";
-import Robot from "../Robot";
+import Form from "../components/Form";
+import Robot from "../components/Robot";
 
 function RobotsMainPage() {
   //https://lanetaneta.com/wp-content/uploads/2019/10/%C2%BFQuieres-125k-Solo-done-su-cara-a-algunos-robots.0337xh&resize=1200:*.jpeg
