@@ -1,4 +1,4 @@
-import RobotsMainPage from "./components/pages/RobotsMainPage";
+import RobotsMainPage from "./pages/RobotsMainPage";
 
 function App() {
   return <RobotsMainPage />;
