@@ -133,3 +133,4 @@ node_modules
 #sonarscanner
 .scannerwork
 sonar-project.properties
+sonar-info.txt

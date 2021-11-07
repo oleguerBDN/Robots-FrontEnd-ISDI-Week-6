@@ -4,8 +4,6 @@ import Robot from "../components/Robot";
 import useRobots from "../hooks/useRobots";
 
 function RobotsMainPage() {
-  //https://lanetaneta.com/wp-content/uploads/2019/10/%C2%BFQuieres-125k-Solo-done-su-cara-a-algunos-robots.0337xh&resize=1200:*.jpeg
-
   const { robots, loadRobots, deleteRobot } = useRobots();
 
   useEffect(() => {
