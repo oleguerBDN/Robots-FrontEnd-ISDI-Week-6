@@ -4,6 +4,8 @@ import { server } from "../mock/server";
 import { screen, waitFor, render } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import FormPage from "./FormPage";
+import { BrowserRouter as Router } from "react-router-dom";
+
 const store = configureStore();
 
 describe("Given a FormPage component", () => {
@@ -34,7 +36,9 @@ describe("Given a FormPage component", () => {
 
       render(
         <Provider store={store}>
-          <FormPage />
+          <Router>
+            <FormPage />
+          </Router>
         </Provider>
       );
 
@@ -50,7 +54,6 @@ describe("Given a FormPage component", () => {
 
       await waitFor(() => {
         const robotName = screen.queryByRole("heading", { name: robot.name });
-        screen.debug();
         expect(robotName).toBeInTheDocument();
       });
     });

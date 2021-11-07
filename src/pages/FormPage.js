@@ -1,7 +1,7 @@
 import Form from "../components/Form";
 import useRobots from "../hooks/useRobots";
 
-function FormPage() {
+function FormPage({ update }) {
   const { addRobot } = useRobots();
 
   const onClickAdd = (robot) => {
@@ -16,6 +16,10 @@ function FormPage() {
     };
     addRobot(parsedRobot);
   };
+
+  if (update) {
+    console.log("update");
+  }
 
   return (
     <>

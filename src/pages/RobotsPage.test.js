@@ -4,6 +4,8 @@ import { server } from "../mock/server";
 import { screen, waitFor, render } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import RobotsPage from "./RobotsPage";
+import { BrowserRouter as Router } from "react-router-dom";
+
 const store = configureStore();
 
 describe("Given a RobotsMainPage component", () => {
@@ -46,7 +48,9 @@ describe("Given a RobotsMainPage component", () => {
 
       render(
         <Provider store={store}>
-          <RobotsPage />
+          <Router>
+            <RobotsPage />
+          </Router>
         </Provider>
       );
       const firstRobotName = await screen.findByRole("heading", {
@@ -102,7 +106,9 @@ describe("Given a RobotsMainPage component", () => {
 
       render(
         <Provider store={store}>
-          <RobotsPage />
+          <Router>
+            <RobotsPage />
+          </Router>
         </Provider>
       );
 
@@ -122,9 +128,7 @@ describe("Given a RobotsMainPage component", () => {
       userEvent.click(firstButtonDelete);
 
       await waitFor(() => {
-        screen.debug();
         expect(firstRobotName).not.toBeInTheDocument();
-        screen.debug();
         expect(secondRobotName).toBeInTheDocument();
       });
     });

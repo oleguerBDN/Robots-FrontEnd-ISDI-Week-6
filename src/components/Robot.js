@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 const Robot = ({ robot, deleteClick, updateClick }) => {
   return (
     <div className="max-w-sm px-6 pt-6 pb-2 bg-white shadow-lg rounded-xl">
@@ -23,12 +25,14 @@ const Robot = ({ robot, deleteClick, updateClick }) => {
         >
           DELETE
         </button>
+        {/* <Link to={"/form/" + robot.id}> */}
         <button
           className="w-full mt-4 text-xl text-white bg-blue-800 shadow-lg py-1.5 rounded-xl"
           onClick={() => updateClick(robot.id)}
         >
           MODIFY
         </button>
+        {/* </Link> */}
       </div>
     </div>
   );
