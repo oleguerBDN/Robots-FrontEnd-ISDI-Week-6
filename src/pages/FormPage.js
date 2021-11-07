@@ -1,8 +1,10 @@
 import Form from "../components/Form";
+import useRobot from "../hooks/useRobot";
 import useRobots from "../hooks/useRobots";
 
 function FormPage() {
-  const { addRobot } = useRobots();
+  const { addRobot, loadRobots } = useRobots();
+  const { updateRobot } = useRobot();
 
   const onClickAdd = (robot) => {
     const parsedRobot = {
@@ -14,7 +16,13 @@ function FormPage() {
         birth: robot.date,
       },
     };
-    addRobot(parsedRobot);
+
+    if (robot.id) {
+      updateRobot({ ...parsedRobot, id: robot.id });
+      loadRobots();
+    } else {
+      addRobot(parsedRobot);
+    }
   };
 
   return (
