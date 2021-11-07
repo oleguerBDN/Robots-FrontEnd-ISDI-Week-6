@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 const Form = ({ addRobot }) => {
   const initFormData = {
@@ -9,6 +9,13 @@ const Form = ({ addRobot }) => {
     resistance: 5,
   };
   const [formData, setFormData] = useState(initFormData);
+  const [isDisabled, setIsDisabled] = useState(true);
+
+  useEffect(() => {
+    setIsDisabled(
+      formData.name === "" || formData.img === "" || formData.date === ""
+    );
+  }, [formData]);
 
   const onChange = (event) => {
     setFormData({ ...formData, [event.target.id]: event.target.value });
@@ -16,7 +23,6 @@ const Form = ({ addRobot }) => {
 
   const onSubmit = (event) => {
     event.preventDefault();
-    console.log(formData);
     addRobot(formData);
   };
 
@@ -108,7 +114,14 @@ const Form = ({ addRobot }) => {
         />
       </div>
       <div className="flex items-center w-full pt-4 mb-4">
-        <button className="w-full py-3 text-base text-white bg-blue-600 border-blue-600 rounded-md focus:ring-2  hover:bg-blue-800">
+        <button
+          className={
+            isDisabled
+              ? "w-full py-3 text-base text-white bg-blue-600 border-blue-600 cursor-not-allowed rounded-md disabled:opacity-30"
+              : "w-full py-3 text-base text-white bg-blue-600 border-blue-600 rounded-md focus:ring-2 hover:bg-blue-800"
+          }
+          disabled={isDisabled}
+        >
           Add robot
         </button>
       </div>
