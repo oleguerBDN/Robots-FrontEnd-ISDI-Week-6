@@ -17,6 +17,10 @@ const Form = ({ addRobot }) => {
     );
   }, [formData]);
 
+  const resetForm = () => {
+    setFormData(initFormData);
+  };
+
   const onChange = (event) => {
     setFormData({ ...formData, [event.target.id]: event.target.value });
   };
@@ -24,6 +28,7 @@ const Form = ({ addRobot }) => {
   const onSubmit = (event) => {
     event.preventDefault();
     addRobot(formData);
+    resetForm();
   };
 
   return (
