@@ -29,7 +29,6 @@ const Form = ({ addRobot }) => {
         date: robot.features.birth,
         id: robot.id,
       });
-      //setTextButton("Update");
     }
   }, [robot]);
 
@@ -164,7 +163,7 @@ const Form = ({ addRobot }) => {
             }
             disabled={isDisabled}
           >
-            Add robot
+            {robot.isEditing ? "UPDATE ROBOT" : "ADD ROBOT"}
           </button>
         </div>
       </form>
