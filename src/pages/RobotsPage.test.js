@@ -1,14 +1,9 @@
 import { Provider } from "react-redux";
 import configureStore from "../redux/store";
 import { server } from "../mock/server";
-import RobotsMainPage from "./RobotsMainPage";
-import {
-  screen,
-  waitFor,
-  render,
-  waitForElementToBeRemoved,
-} from "@testing-library/react";
+import { screen, waitFor, render } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
+import RobotsPage from "./RobotsPage";
 const store = configureStore();
 
 describe("Given a RobotsMainPage component", () => {
@@ -51,7 +46,7 @@ describe("Given a RobotsMainPage component", () => {
 
       render(
         <Provider store={store}>
-          <RobotsMainPage />
+          <RobotsPage />
         </Provider>
       );
       const firstRobotName = await screen.findByRole("heading", {
@@ -107,7 +102,7 @@ describe("Given a RobotsMainPage component", () => {
 
       render(
         <Provider store={store}>
-          <RobotsMainPage />
+          <RobotsPage />
         </Provider>
       );
 
@@ -127,57 +122,10 @@ describe("Given a RobotsMainPage component", () => {
       userEvent.click(firstButtonDelete);
 
       await waitFor(() => {
-        expect(firstRobotName).not.toBeInTheDocument();
-        expect(secondRobotName).toBeInTheDocument();
-      });
-    });
-  });
-
-  describe("When it's rendered, form filled and submited", () => {
-    beforeAll(() => {
-      server.listen();
-    });
-
-    beforeEach(() => {
-      server.resetHandlers();
-    });
-
-    afterAll(() => {
-      server.close();
-    });
-
-    test("Then it should add the new robot", async () => {
-      const robot = {
-        features: {
-          speed: 7,
-          resistance: 8,
-          birth: "2021-10-09T00:00:00.000Z",
-        },
-        id: "6185993022dd925261d3cfca6",
-        name: "newRobot",
-        img: "img",
-      };
-
-      render(
-        <Provider store={store}>
-          <RobotsMainPage />
-        </Provider>
-      );
-
-      const name = screen.getByLabelText(/name/i);
-      const date = screen.getByLabelText(/date/i);
-      userEvent.type(name, "newRobot");
-      userEvent.type(date, "whatever");
-
-      const addButton = await screen.findByRole("button", {
-        name: /add robot/i,
-      });
-      userEvent.click(addButton);
-
-      await waitFor(() => {
-        const robotName = screen.queryByRole("heading", { name: robot.name });
         screen.debug();
-        expect(robotName).toBeInTheDocument();
+        expect(firstRobotName).not.toBeInTheDocument();
+        screen.debug();
+        expect(secondRobotName).toBeInTheDocument();
       });
     });
   });
