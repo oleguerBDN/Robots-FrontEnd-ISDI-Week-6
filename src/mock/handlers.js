@@ -29,4 +29,11 @@ export const handlers = [
     );
     return response;
   }),
+  rest.delete(
+    process.env.REACT_APP_URL_API + ":idRobot",
+    async (req, res, ctx) => {
+      const response = res(ctx.status(200), ctx.json({}));
+      return response;
+    }
+  ),
 ];
