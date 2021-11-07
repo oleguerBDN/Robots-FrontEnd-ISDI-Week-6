@@ -13,7 +13,7 @@ function App() {
           <Route path="/robots" element={<RobotsPage />} />
           <Route path="/form" element={<FormPage />} />
           <Route path="/" element={<RobotsPage />} />
-          <Route path="*" element={<RobotsPage />}></Route>
+          <Route path="/*" element={<RobotsPage />}></Route>
         </Routes>
       </div>
     </Router>
