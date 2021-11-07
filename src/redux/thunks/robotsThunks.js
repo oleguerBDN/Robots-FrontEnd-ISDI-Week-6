@@ -1,5 +1,9 @@
 import axios from "axios";
-import { loadRobotsAction, deleteRobotAction } from "../actions/actionCreators";
+import {
+  loadRobotsAction,
+  deleteRobotAction,
+  addRobotAction,
+} from "../actions/actionCreators";
 
 export const loadRobotsThunk = async (dispatch) => {
   const { data: robots } = await axios.get(process.env.REACT_APP_URL_API);
@@ -17,5 +21,9 @@ export const deleteRobotThunk = (robotId) => async (dispatch) => {
 };
 
 export const addRobotThunk = (robot) => async (dispatch) => {
-  const response = await fetch(process.env.REACT_APP_URL_API);
+  const { data: newRobot } = await axios.post(
+    process.env.REACT_APP_URL_API,
+    robot
+  );
+  dispatch(addRobotAction(newRobot));
 };
