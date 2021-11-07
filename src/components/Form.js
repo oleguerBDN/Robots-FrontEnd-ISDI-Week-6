@@ -1,5 +1,5 @@
 import { useEffect, useMemo, useState } from "react";
-import { useNavigate, useParams } from "react-router";
+import { useNavigate } from "react-router";
 import useRobot from "../hooks/useRobot";
 
 const Form = ({ addRobot }) => {
@@ -17,11 +17,10 @@ const Form = ({ addRobot }) => {
   const [isDisabled, setIsDisabled] = useState(true);
   const [messageEmpty, setMessageEmpty] = useState(true);
   const { robot } = useRobot();
-  const { robotId } = useParams();
   let navigate = useNavigate();
 
   useEffect(() => {
-    if (robot.isEditing && robotId) {
+    if (robot.isEditing) {
       setFormData({
         name: robot.name,
         img: robot.img,
@@ -32,7 +31,7 @@ const Form = ({ addRobot }) => {
       });
       //setTextButton("Update");
     }
-  }, [robot, robotId]);
+  }, [robot]);
 
   useEffect(() => {
     setIsDisabled(

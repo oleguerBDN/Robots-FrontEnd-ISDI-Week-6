@@ -10,6 +10,9 @@ const robotReducer = (robot = {}, action) => {
     case actionTypes.updateRobot:
       newRobot = { ...action.robot };
       break;
+    case actionTypes.resetRobot:
+      newRobot = { ...robot, isEditing: false };
+      break;
     default:
       newRobot = { ...robot };
       break;

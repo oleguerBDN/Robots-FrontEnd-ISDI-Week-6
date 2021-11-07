@@ -1,5 +1,3 @@
-import { Link } from "react-router-dom";
-
 const Robot = ({ robot, deleteClick, updateClick }) => {
   return (
     <div className="max-w-sm px-6 pt-6 pb-2 bg-white shadow-lg rounded-xl">

@@ -6,20 +6,21 @@ import useRobot from "../hooks/useRobot";
 
 function RobotsPage() {
   const { robots, loadRobots, deleteRobot } = useRobots();
-  const { loadRobot } = useRobot();
+  const { loadRobot, resetRobot } = useRobot();
 
   let navigate = useNavigate();
 
   useEffect(() => {
     loadRobots();
-  }, [loadRobots]);
+    resetRobot();
+  }, [loadRobots, resetRobot]);
 
   const onClickDelete = (robotId) => {
     deleteRobot(robotId);
   };
   const updateRobot = (robotId) => {
     loadRobot(robotId);
-    navigate("/form/" + robotId);
+    navigate("/form");
   };
 
   return (

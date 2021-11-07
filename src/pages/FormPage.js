@@ -1,7 +1,7 @@
 import Form from "../components/Form";
 import useRobots from "../hooks/useRobots";
 
-function FormPage({ update }) {
+function FormPage() {
   const { addRobot } = useRobots();
 
   const onClickAdd = (robot) => {
@@ -19,7 +19,7 @@ function FormPage({ update }) {
 
   return (
     <>
-      <Form addRobot={onClickAdd} update={update} />
+      <Form addRobot={onClickAdd} />
     </>
   );
 }
