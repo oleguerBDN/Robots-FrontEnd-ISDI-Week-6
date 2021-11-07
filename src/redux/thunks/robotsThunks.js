@@ -21,8 +21,9 @@ export const deleteRobotThunk = (robotId) => async (dispatch) => {
 };
 
 export const addRobotThunk = (robot) => async (dispatch) => {
+  const tokenString = "?token=" + process.env.REACT_APP_TOKEN;
   const { data: newRobot } = await axios.post(
-    process.env.REACT_APP_URL_API,
+    process.env.REACT_APP_URL_API + tokenString,
     robot
   );
   dispatch(addRobotAction(newRobot));
