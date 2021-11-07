@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 const Form = ({ addRobot }) => {
   const initFormData = {
     name: "",
-    img: "https://ibb.co/5BtBYNP",
+    img: "https://i.ibb.co/GcBcsKq/robot.jpg",
     date: "",
     speed: 5,
     resistance: 5,

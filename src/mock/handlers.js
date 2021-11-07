@@ -36,4 +36,20 @@ export const handlers = [
       return response;
     }
   ),
+  rest.post(process.env.REACT_APP_URL_API, async (req, res, ctx) => {
+    const response = res(
+      ctx.status(201),
+      ctx.json({
+        features: {
+          speed: 7,
+          resistance: 8,
+          birth: "2021-10-09T00:00:00.000Z",
+        },
+        id: "6185993022dd925261d3cfca6",
+        name: "newRobot",
+        img: "img",
+      })
+    );
+    return response;
+  }),
 ];
