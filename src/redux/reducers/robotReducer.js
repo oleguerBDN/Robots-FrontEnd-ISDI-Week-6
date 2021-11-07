@@ -8,7 +8,7 @@ const robotReducer = (robot = {}, action) => {
       newRobot = { ...action.robot, isEditing: true };
       break;
     case actionTypes.updateRobot:
-      newRobot = { ...action.robot };
+      newRobot = { ...action.robot, isEditing: false };
       break;
     case actionTypes.resetRobot:
       newRobot = { ...robot, isEditing: false };

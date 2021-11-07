@@ -14,7 +14,12 @@ function FormPage() {
         birth: robot.date,
       },
     };
-    addRobot(parsedRobot);
+
+    if (robot.id) {
+      console.log("update");
+    } else {
+      addRobot(parsedRobot);
+    }
   };
 
   return (

@@ -4,6 +4,7 @@ import {
   deleteRobotAction,
   addRobotAction,
   loadRobotAction,
+  updateRobotAction,
 } from "../actions/actionCreators";
 
 export const loadRobotsThunk = async (dispatch) => {
@@ -35,4 +36,13 @@ export const addRobotThunk = (robot) => async (dispatch) => {
     robot
   );
   dispatch(addRobotAction(newRobot));
+};
+
+export const updateRobotThunk = (robot) => async (dispatch) => {
+  const tokenString = "?token=" + process.env.REACT_APP_TOKEN;
+  const { data: newRobot } = await axios.put(
+    process.env.REACT_APP_URL_API + "update" + tokenString,
+    robot
+  );
+  dispatch(updateRobotAction(newRobot));
 };

@@ -2,7 +2,11 @@ const Robot = ({ robot, deleteClick, updateClick }) => {
   return (
     <div className="max-w-sm px-6 pt-6 pb-2 bg-white shadow-lg rounded-xl">
       <div className="relative">
-        <img className="w-full rounded-xl" src={robot.img} alt={robot.name} />
+        <img
+          className="object-cover w-full h-48 rounded-xl"
+          src={robot.img}
+          alt={robot.name}
+        />
       </div>
       <h1 className="mt-4 text-3xl font-bold text-gray-800 cursor-pointer">
         {robot.name}

@@ -1,7 +1,7 @@
 import { useCallback } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { resetRobotAction } from "../redux/actions/actionCreators";
-import { loadRobotThunk } from "../redux/thunks/robotsThunks";
+import { loadRobotThunk, updateRobotThunk } from "../redux/thunks/robotsThunks";
 
 const useRobot = () => {
   const robot = useSelector((store) => store.robot);
@@ -14,11 +14,18 @@ const useRobot = () => {
     [dispatch]
   );
 
+  const updateRobot = useCallback(
+    (robotUpdated) => {
+      dispatch(updateRobotThunk(robotUpdated));
+    },
+    [dispatch]
+  );
+
   const resetRobot = useCallback(() => {
     dispatch(resetRobotAction());
   }, [dispatch]);
 
-  return { robot, loadRobot, resetRobot };
+  return { robot, loadRobot, resetRobot, updateRobot };
 };
 
 export default useRobot;
