@@ -30,13 +30,13 @@ export const handlers = [
     return response;
   }),
   rest.delete(
-    process.env.REACT_APP_URL_API + ":idRobot",
+    process.env.REACT_APP_URL_API + "delete/" + ":idRobot",
     async (req, res, ctx) => {
       const response = res(ctx.status(200), ctx.json({}));
       return response;
     }
   ),
-  rest.post(process.env.REACT_APP_URL_API, async (req, res, ctx) => {
+  rest.post(process.env.REACT_APP_URL_API + "create", async (req, res, ctx) => {
     const response = res(
       ctx.status(201),
       ctx.json({
