@@ -1,7 +1,23 @@
+import { useState } from "react";
+
 const Form = ({ addRobot }) => {
+  const initFormData = {
+    name: "",
+    img: "https://ibb.co/5BtBYNP",
+    date: "",
+    speed: 5,
+    resistance: 5,
+  };
+  const [formData, setFormData] = useState(initFormData);
+
+  const onChange = (event) => {
+    setFormData({ ...formData, [event.target.id]: event.target.value });
+  };
+
   const onSubmit = (event) => {
     event.preventDefault();
-    addRobot();
+    console.log(formData);
+    addRobot(formData);
   };
 
   return (
@@ -19,6 +35,8 @@ const Form = ({ addRobot }) => {
           id="name"
           name="name"
           placeholder="name"
+          onChange={onChange}
+          value={formData.name}
           className="w-full px-4 py-2 mt-2 mr-4 text-base text-black bg-gray-200 rounded-lg  focus:shadow-outline "
         />
       </div>
@@ -31,6 +49,8 @@ const Form = ({ addRobot }) => {
           id="img"
           name="img"
           placeholder="image"
+          onChange={onChange}
+          value={formData.img}
           className="w-full px-4 py-2 mt-2 mr-4 text-base text-black bg-gray-200 rounded-lg  focus:shadow-outline "
         />
       </div>
@@ -43,6 +63,8 @@ const Form = ({ addRobot }) => {
           type="date"
           id="date"
           name="date"
+          onChange={onChange}
+          value={formData.date}
           className="w-full px-4 py-2 mt-2 mr-4 text-base text-black bg-gray-200 rounded-lg  focus:shadow-outline "
         />
       </div>
@@ -61,6 +83,8 @@ const Form = ({ addRobot }) => {
           max="10"
           name="speed"
           placeholder="Speed"
+          onChange={onChange}
+          value={formData.speed}
           className="w-full px-4 py-2 mt-2 mr-4 text-base text-black bg-gray-200 rounded-lg  focus:shadow-outline "
         />
       </div>
@@ -77,6 +101,8 @@ const Form = ({ addRobot }) => {
           min="0"
           max="10"
           name="resistance"
+          onChange={onChange}
+          value={formData.resistance}
           placeholder="Resistance"
           className="w-full px-4 py-2 mt-2 mr-4 text-base text-black bg-gray-200 rounded-lg  focus:shadow-outline "
         />
