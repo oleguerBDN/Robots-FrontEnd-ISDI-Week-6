@@ -1,16 +1,38 @@
-import { useEffect, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
+import { useNavigate, useParams } from "react-router";
+import useRobot from "../hooks/useRobot";
 
 const Form = ({ addRobot }) => {
-  const initFormData = {
-    name: "",
-    img: "https://i.ibb.co/GcBcsKq/robot.jpg",
-    date: "",
-    speed: 5,
-    resistance: 5,
-  };
+  const initFormData = useMemo(
+    () => ({
+      name: "",
+      img: "https://i.ibb.co/GcBcsKq/robot.jpg",
+      date: "",
+      speed: 5,
+      resistance: 5,
+    }),
+    []
+  );
   const [formData, setFormData] = useState(initFormData);
   const [isDisabled, setIsDisabled] = useState(true);
   const [messageEmpty, setMessageEmpty] = useState(true);
+  const { robot } = useRobot();
+  const { robotId } = useParams();
+  let navigate = useNavigate();
+
+  useEffect(() => {
+    if (robot.isEditing && robotId) {
+      setFormData({
+        name: robot.name,
+        img: robot.img,
+        speed: robot.features.speed,
+        resistance: robot.features.resistance,
+        date: robot.features.birth,
+        id: robot.id,
+      });
+      //setTextButton("Update");
+    }
+  }, [robot, robotId]);
 
   useEffect(() => {
     setIsDisabled(
@@ -20,6 +42,7 @@ const Form = ({ addRobot }) => {
 
   const resetForm = () => {
     setFormData(initFormData);
+    navigate("/robots/");
   };
 
   const onChange = (event) => {

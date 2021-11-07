@@ -2,9 +2,12 @@ import { useEffect } from "react";
 import Robot from "../components/Robot";
 import useRobots from "../hooks/useRobots";
 import { useNavigate } from "react-router-dom";
+import useRobot from "../hooks/useRobot";
 
 function RobotsPage() {
   const { robots, loadRobots, deleteRobot } = useRobots();
+  const { loadRobot } = useRobot();
+
   let navigate = useNavigate();
 
   useEffect(() => {
@@ -15,6 +18,7 @@ function RobotsPage() {
     deleteRobot(robotId);
   };
   const updateRobot = (robotId) => {
+    loadRobot(robotId);
     navigate("/form/" + robotId);
   };
 

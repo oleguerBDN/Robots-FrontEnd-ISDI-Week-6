@@ -25,14 +25,12 @@ const Robot = ({ robot, deleteClick, updateClick }) => {
         >
           DELETE
         </button>
-        {/* <Link to={"/form/" + robot.id}> */}
         <button
           className="w-full mt-4 text-xl text-white bg-blue-800 shadow-lg py-1.5 rounded-xl"
           onClick={() => updateClick(robot.id)}
         >
           MODIFY
         </button>
-        {/* </Link> */}
       </div>
     </div>
   );

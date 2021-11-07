@@ -17,13 +17,9 @@ function FormPage({ update }) {
     addRobot(parsedRobot);
   };
 
-  if (update) {
-    console.log("update");
-  }
-
   return (
     <>
-      <Form addRobot={onClickAdd} />
+      <Form addRobot={onClickAdd} update={update} />
     </>
   );
 }
