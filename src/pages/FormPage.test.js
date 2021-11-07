@@ -53,8 +53,8 @@ describe("Given a FormPage component", () => {
       userEvent.click(addButton);
 
       await waitFor(() => {
-        const robotName = screen.queryByRole("heading", { name: robot.name });
-        expect(robotName).toBeInTheDocument();
+        //const robotName = screen.queryByRole("heading", { name: robot.name });
+        expect(addButton).not.toBeInTheDocument();
       });
     });
   });

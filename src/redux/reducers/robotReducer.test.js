@@ -18,7 +18,7 @@ describe("Given a robotReducer", () => {
 
       const newRobot = robotReducer({}, action);
 
-      expect(newRobot).toEqual(robot);
+      expect(newRobot).toEqual({ ...robot, isEditing: true });
     });
   });
   describe("When it receives an action type updateRobot", () => {
