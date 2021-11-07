@@ -13,7 +13,7 @@ export const loadRobotsThunk = async (dispatch) => {
 export const deleteRobotThunk = (robotId) => async (dispatch) => {
   const tokenString = "?token=" + process.env.REACT_APP_TOKEN;
   const { status } = await axios.delete(
-    process.env.REACT_APP_URL_API + robotId + tokenString
+    process.env.REACT_APP_URL_API + "delete/" + robotId + tokenString
   );
   if (status === 200) {
     dispatch(deleteRobotAction(robotId));
@@ -23,7 +23,7 @@ export const deleteRobotThunk = (robotId) => async (dispatch) => {
 export const addRobotThunk = (robot) => async (dispatch) => {
   const tokenString = "?token=" + process.env.REACT_APP_TOKEN;
   const { data: newRobot } = await axios.post(
-    process.env.REACT_APP_URL_API + tokenString,
+    process.env.REACT_APP_URL_API + "create" + tokenString,
     robot
   );
   dispatch(addRobotAction(newRobot));
