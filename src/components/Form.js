@@ -1,7 +1,29 @@
+import { useEffect, useState } from "react";
+
 const Form = ({ addRobot }) => {
+  const initFormData = {
+    name: "",
+    img: "https://ibb.co/5BtBYNP",
+    date: "",
+    speed: 5,
+    resistance: 5,
+  };
+  const [formData, setFormData] = useState(initFormData);
+  const [isDisabled, setIsDisabled] = useState(true);
+
+  useEffect(() => {
+    setIsDisabled(
+      formData.name === "" || formData.img === "" || formData.date === ""
+    );
+  }, [formData]);
+
+  const onChange = (event) => {
+    setFormData({ ...formData, [event.target.id]: event.target.value });
+  };
+
   const onSubmit = (event) => {
     event.preventDefault();
-    addRobot();
+    addRobot(formData);
   };
 
   return (
@@ -19,6 +41,8 @@ const Form = ({ addRobot }) => {
           id="name"
           name="name"
           placeholder="name"
+          onChange={onChange}
+          value={formData.name}
           className="w-full px-4 py-2 mt-2 mr-4 text-base text-black bg-gray-200 rounded-lg  focus:shadow-outline "
         />
       </div>
@@ -31,6 +55,8 @@ const Form = ({ addRobot }) => {
           id="img"
           name="img"
           placeholder="image"
+          onChange={onChange}
+          value={formData.img}
           className="w-full px-4 py-2 mt-2 mr-4 text-base text-black bg-gray-200 rounded-lg  focus:shadow-outline "
         />
       </div>
@@ -43,6 +69,8 @@ const Form = ({ addRobot }) => {
           type="date"
           id="date"
           name="date"
+          onChange={onChange}
+          value={formData.date}
           className="w-full px-4 py-2 mt-2 mr-4 text-base text-black bg-gray-200 rounded-lg  focus:shadow-outline "
         />
       </div>
@@ -61,6 +89,8 @@ const Form = ({ addRobot }) => {
           max="10"
           name="speed"
           placeholder="Speed"
+          onChange={onChange}
+          value={formData.speed}
           className="w-full px-4 py-2 mt-2 mr-4 text-base text-black bg-gray-200 rounded-lg  focus:shadow-outline "
         />
       </div>
@@ -77,12 +107,21 @@ const Form = ({ addRobot }) => {
           min="0"
           max="10"
           name="resistance"
+          onChange={onChange}
+          value={formData.resistance}
           placeholder="Resistance"
           className="w-full px-4 py-2 mt-2 mr-4 text-base text-black bg-gray-200 rounded-lg  focus:shadow-outline "
         />
       </div>
       <div className="flex items-center w-full pt-4 mb-4">
-        <button className="w-full py-3 text-base text-white bg-blue-600 border-blue-600 rounded-md focus:ring-2  hover:bg-blue-800">
+        <button
+          className={
+            isDisabled
+              ? "w-full py-3 text-base text-white bg-blue-600 border-blue-600 cursor-not-allowed rounded-md disabled:opacity-30"
+              : "w-full py-3 text-base text-white bg-blue-600 border-blue-600 rounded-md focus:ring-2 hover:bg-blue-800"
+          }
+          disabled={isDisabled}
+        >
           Add robot
         </button>
       </div>
