@@ -3,11 +3,19 @@ import {
   loadRobotsAction,
   deleteRobotAction,
   addRobotAction,
+  loadRobotAction,
 } from "../actions/actionCreators";
 
 export const loadRobotsThunk = async (dispatch) => {
   const { data: robots } = await axios.get(process.env.REACT_APP_URL_API);
   dispatch(loadRobotsAction(robots));
+};
+
+export const loadRobotThunk = (robotId) => async (dispatch) => {
+  const { data: robot } = await axios.get(
+    process.env.REACT_APP_URL_API + robotId
+  );
+  dispatch(loadRobotAction(robot));
 };
 
 export const deleteRobotThunk = (robotId) => async (dispatch) => {

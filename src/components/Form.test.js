@@ -1,11 +1,21 @@
 import { render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import Form from "./Form";
+import { BrowserRouter as Router } from "react-router-dom";
+import { Provider } from "react-redux";
+import configureStore from "../redux/store";
+const store = configureStore();
 
 describe("Given a Form component", () => {
   describe("When it's rendered", () => {
     test("Then it should render the inputs and button", () => {
-      render(<Form addRobot={() => {}} />);
+      render(
+        <Provider store={store}>
+          <Router>
+            <Form addRobot={() => {}} />
+          </Router>
+        </Provider>
+      );
       const name = screen.getByLabelText(/name/i);
       const image = screen.getByLabelText(/image/i);
       const date = screen.getByLabelText(/date/i);
@@ -25,7 +35,13 @@ describe("Given a Form component", () => {
     test("Then the function add should have NOT been called", () => {
       const addFn = jest.fn();
 
-      render(<Form addRobot={addFn} />);
+      render(
+        <Provider store={store}>
+          <Router>
+            <Form addRobot={addFn} />
+          </Router>
+        </Provider>
+      );
       const button = screen.getByRole("button", { name: /add robot/i });
       button.click();
 
@@ -36,7 +52,13 @@ describe("Given a Form component", () => {
     test("Then the function add should have NOT been called", () => {
       const addFn = jest.fn();
 
-      render(<Form addRobot={addFn} />);
+      render(
+        <Provider store={store}>
+          <Router>
+            <Form addRobot={addFn} />
+          </Router>
+        </Provider>
+      );
       const name = screen.getByLabelText(/name/i);
       const date = screen.getByLabelText(/date/i);
       userEvent.type(name, "whatever");

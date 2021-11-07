@@ -12,6 +12,7 @@ function App() {
         <Routes>
           <Route path="/robots" element={<RobotsPage />} />
           <Route path="/form" element={<FormPage />} />
+          <Route path="/form/:robotId" element={<FormPage update={true} />} />
           <Route path="/" element={<RobotsPage />} />
           <Route path="*" element={<h1>PAGE NOT FOUND</h1>}></Route>
         </Routes>
