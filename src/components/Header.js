@@ -25,7 +25,7 @@ function Header() {
         </li>
         <li className="mr-1">
           <Link
-            to="login"
+            to={user.isAuthenticated ? "logout" : "login"}
             className="inline-block px-4 py-2 font-semibold text-blue-500 bg-white hover:text-blue-800"
           >
             {user.isAuthenticated ? "LOGOUT" : "LOGIN"}

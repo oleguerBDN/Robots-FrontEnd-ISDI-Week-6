@@ -19,10 +19,9 @@ const LoginPage = () => {
 
   useEffect(() => {
     if (user.isAuthenticated) {
-      logoutUser();
-      navigate(-1);
+      navigate("/robots/");
     }
-  }, [logoutUser, navigate, user.isAuthenticated]);
+  }, [navigate, user.isAuthenticated]);
 
   useEffect(() => {
     if (robot.isEditing) {
@@ -45,10 +44,9 @@ const LoginPage = () => {
     setFormData({ ...formData, [event.target.id]: event.target.value });
   };
 
-  const onSubmit = (event) => {
+  const onSubmit = async (event) => {
     event.preventDefault();
-    loginUser(formData);
-    navigate("/robots/");
+    await loginUser(formData);
   };
 
   return (
