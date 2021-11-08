@@ -9,7 +9,7 @@ import useUser from "./hooks/useUser";
 import LogoutPage from "./pages/LogoutPage";
 
 function App() {
-  const { loggedUser } = useUser();
+  const { user, loggedUser } = useUser();
 
   useEffect(() => {
     const token = localStorage.getItem(
@@ -28,7 +28,10 @@ function App() {
       <div className="flex flex-col items-center justify-center min-h-screen py-20 bg-gradient-to-tr from-gray-800 to-blue-400">
         <Routes>
           <Route path="/robots" element={<RobotsPage />} />
-          <Route path="/form" element={<FormPage />} />
+          <Route
+            path={user.isAuthenticated ? "/form" : "/robots"}
+            element={<FormPage />}
+          />
           <Route path="/login" element={<LoginPage />} />
           <Route path="/logout" element={<LogoutPage />} />
           <Route path="/" element={<RobotsPage />} />
