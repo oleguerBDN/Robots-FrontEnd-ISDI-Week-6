@@ -28,3 +28,12 @@ export const updateRobotAction = (robot) => ({
 export const resetRobotAction = () => ({
   type: actionTypes.resetRobot,
 });
+
+export const loginUserAction = (user) => ({
+  type: actionTypes.loginUser,
+  user,
+});
+
+export const logoutUserAction = () => ({
+  type: actionTypes.logoutUser,
+});
