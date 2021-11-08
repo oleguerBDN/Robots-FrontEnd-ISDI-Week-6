@@ -22,7 +22,14 @@ export const loadRobotThunk = (robotId) => async (dispatch) => {
 export const deleteRobotThunk = (robotId) => async (dispatch) => {
   const tokenString = "?token=" + process.env.REACT_APP_TOKEN;
   const { status } = await axios.delete(
-    process.env.REACT_APP_URL_API + "delete/" + robotId + tokenString
+    process.env.REACT_APP_URL_API + "delete/" + robotId + tokenString,
+    {
+      headers: {
+        Authorization:
+          "Bearer " +
+          localStorage.getItem(process.env.REACT_APP_LOCALSTORAGE_TOKEN),
+      },
+    }
   );
   if (status === 200) {
     dispatch(deleteRobotAction(robotId));
@@ -49,7 +56,14 @@ export const updateRobotThunk = (robot) => async (dispatch) => {
   const tokenString = "?token=" + process.env.REACT_APP_TOKEN;
   const { data: newRobot } = await axios.put(
     process.env.REACT_APP_URL_API + "update" + tokenString,
-    robot
+    robot,
+    {
+      headers: {
+        Authorization:
+          "Bearer " +
+          localStorage.getItem(process.env.REACT_APP_LOCALSTORAGE_TOKEN),
+      },
+    }
   );
   dispatch(updateRobotAction(newRobot));
 };
