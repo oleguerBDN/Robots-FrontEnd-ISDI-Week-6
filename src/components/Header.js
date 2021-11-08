@@ -20,6 +20,14 @@ function Header() {
             ROBOTS
           </Link>
         </li>
+        <li className="mr-1">
+          <Link
+            to="login"
+            className="inline-block px-4 py-2 font-semibold text-blue-500 bg-white hover:text-blue-800"
+          >
+            LOGIN
+          </Link>
+        </li>
       </ul>
     </>
   );
