@@ -14,7 +14,7 @@ const LoginPage = () => {
   const [formData, setFormData] = useState(initFormData);
   const [isDisabled, setIsDisabled] = useState(true);
   const { robot } = useRobot();
-  const { user, loginUser, logoutUser } = useUser();
+  const { user, loginUser } = useUser();
   let navigate = useNavigate();
 
   useEffect(() => {
