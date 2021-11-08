@@ -1,6 +1,7 @@
 import { useEffect, useMemo, useState } from "react";
 import { useNavigate } from "react-router";
 import useRobot from "../hooks/useRobot";
+import useUser from "../hooks/useUser";
 
 const LoginPage = () => {
   const initFormData = useMemo(
@@ -12,9 +13,16 @@ const LoginPage = () => {
   );
   const [formData, setFormData] = useState(initFormData);
   const [isDisabled, setIsDisabled] = useState(true);
-  // const [messageEmpty, setMessageEmpty] = useState(true);
   const { robot } = useRobot();
+  const { user, loginUser, logoutUser } = useUser();
   let navigate = useNavigate();
+
+  useEffect(() => {
+    if (user.isAuthenticated) {
+      logoutUser();
+      navigate(-1);
+    }
+  }, [logoutUser, navigate, user.isAuthenticated]);
 
   useEffect(() => {
     if (robot.isEditing) {
@@ -33,24 +41,14 @@ const LoginPage = () => {
     setIsDisabled(formData.username === "" || formData.password === "");
   }, [formData]);
 
-  const resetForm = () => {
-    setFormData(initFormData);
-    navigate("/robots/");
-  };
-
   const onChange = (event) => {
     setFormData({ ...formData, [event.target.id]: event.target.value });
-    // if (!messageEmpty) {
-    //   setMessageEmpty(true);
-    // }
   };
 
   const onSubmit = (event) => {
     event.preventDefault();
-    console.log(formData);
-    //addRobot(formData);
-    //resetForm();
-    // setMessageEmpty(false);
+    loginUser(formData);
+    navigate("/robots/");
   };
 
   return (
@@ -110,7 +108,6 @@ const LoginPage = () => {
           </button>
         </div>
       </form>
-      {/* <h2 className="bg-white	">{messageEmpty || "Added robot successfully"}</h2> */}
     </>
   );
 };
