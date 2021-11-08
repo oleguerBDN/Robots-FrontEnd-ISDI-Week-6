@@ -1,6 +1,9 @@
 import { Link } from "react-router-dom";
+import useUser from "../hooks/useUser";
 
 function Header() {
+  const { user } = useUser();
+
   return (
     <>
       <ul className="flex border-b">
@@ -18,6 +21,14 @@ function Header() {
             className="inline-block px-4 py-2 font-semibold text-blue-500 bg-white hover:text-blue-800"
           >
             ROBOTS
+          </Link>
+        </li>
+        <li className="mr-1">
+          <Link
+            to="login"
+            className="inline-block px-4 py-2 font-semibold text-blue-500 bg-white hover:text-blue-800"
+          >
+            {user.isAuthenticated ? "LOGOUT" : "LOGIN"}
           </Link>
         </li>
       </ul>

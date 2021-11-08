@@ -4,18 +4,22 @@ import axios from "axios";
 
 //jwt-decode
 export const loginUserThunk = (user) => async (dispatch) => {
-  const { data: token, status } = await axios.post(
-    process.env.REACT_APP_URL_API + "login",
-    user
-  );
-  if (status === "200") {
-    const user = jwtDecode(token);
-    dispatch(loginUserAction(user));
-    window.localStorage.setItem(
-      process.env.REACT_APP_LOCALSTORAGE_TOKEN,
-      JSON.stringify({ token })
+  try {
+    const { data, status } = await axios.post(
+      process.env.REACT_APP_URL_API_LOGIN,
+      user
     );
-  }
+    const token = data.token;
+    if (status === 200) {
+      const user = jwtDecode(token);
+      dispatch(loginUserAction(user.username));
+      window.localStorage.setItem(
+        process.env.REACT_APP_LOCALSTORAGE_TOKEN,
+        token
+        // JSON.stringify({ token })
+      );
+    }
+  } catch {}
 };
 
 // SEND WITH TOKEN FROM LOCALSTORAGE EXAMPLE

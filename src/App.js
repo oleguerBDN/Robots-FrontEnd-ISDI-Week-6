@@ -1,6 +1,7 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Header from "./components/Header";
 import FormPage from "./pages/FormPage";
+import LoginPage from "./pages/LoginPage";
 import RobotsPage from "./pages/RobotsPage";
 
 function App() {
@@ -14,6 +15,7 @@ function App() {
         <Routes>
           <Route path="/robots" element={<RobotsPage />} />
           <Route path="/form" element={<FormPage />} />
+          <Route path="/login" element={<LoginPage />} />
           <Route path="/" element={<RobotsPage />} />
           <Route path="/*" element={<RobotsPage />}></Route>
         </Routes>
