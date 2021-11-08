@@ -1,12 +1,26 @@
+import { useEffect } from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Header from "./components/Header";
 import FormPage from "./pages/FormPage";
 import LoginPage from "./pages/LoginPage";
 import RobotsPage from "./pages/RobotsPage";
+import jwtDecode from "jwt-decode";
+import useUser from "./hooks/useUser";
+import LogoutPage from "./pages/LogoutPage";
 
 function App() {
-  // usefect -> const token = JSON.parse(localStorage.getItem(process.env.REACT_APP_LOCALSTORAGE_TOKEN))
-  // if token dispatch(loginuseraction(jwtDecode(token.token)))
+  const { loggedUser } = useUser();
+
+  useEffect(() => {
+    const token = localStorage.getItem(
+      process.env.REACT_APP_LOCALSTORAGE_TOKEN
+    );
+
+    if (token) {
+      loggedUser(jwtDecode(token).username);
+    }
+  }, [loggedUser]);
+
   return (
     <Router>
       <Header />
@@ -16,6 +30,7 @@ function App() {
           <Route path="/robots" element={<RobotsPage />} />
           <Route path="/form" element={<FormPage />} />
           <Route path="/login" element={<LoginPage />} />
+          <Route path="/logout" element={<LogoutPage />} />
           <Route path="/" element={<RobotsPage />} />
           <Route path="/*" element={<RobotsPage />}></Route>
         </Routes>
