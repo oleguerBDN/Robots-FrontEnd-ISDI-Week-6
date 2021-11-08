@@ -24,21 +24,12 @@ function Header() {
           </Link>
         </li>
         <li className="mr-1">
-          {user.isAuthenticated ? (
-            <Link
-              to="login"
-              className="inline-block px-4 py-2 font-semibold text-blue-500 bg-white hover:text-blue-800"
-            >
-              LOGOUT
-            </Link>
-          ) : (
-            <Link
-              to="login"
-              className="inline-block px-4 py-2 font-semibold text-blue-500 bg-white hover:text-blue-800"
-            >
-              LOGIN
-            </Link>
-          )}
+          <Link
+            to="login"
+            className="inline-block px-4 py-2 font-semibold text-blue-500 bg-white hover:text-blue-800"
+          >
+            {user.isAuthenticated ? "LOGOUT" : "LOGIN"}
+          </Link>
         </li>
       </ul>
     </>
