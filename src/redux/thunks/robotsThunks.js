@@ -33,7 +33,14 @@ export const addRobotThunk = (robot) => async (dispatch) => {
   const tokenString = "?token=" + process.env.REACT_APP_TOKEN;
   const { data: newRobot } = await axios.post(
     process.env.REACT_APP_URL_API + "create" + tokenString,
-    robot
+    robot,
+    {
+      headers: {
+        Authorization:
+          "Bearer " +
+          localStorage.getItem(process.env.REACT_APP_LOCALSTORAGE_TOKEN),
+      },
+    }
   );
   dispatch(addRobotAction(newRobot));
 };
