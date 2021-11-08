@@ -9,8 +9,12 @@ function Header() {
       <ul className="flex border-b">
         <li className="mr-1">
           <Link
-            to="form"
-            className="inline-block px-4 py-2 font-semibold text-blue-500 bg-white hover:text-blue-800"
+            to={user.isAuthenticated ? "form" : "#"}
+            className={
+              user.isAuthenticated
+                ? "inline-block px-4 py-2 font-semibold text-blue-500 bg-white hover:text-blue-800"
+                : "inline-block px-4 py-2 font-semibold text-gray-400 bg-white   cursor-not-allowed"
+            }
           >
             FORM
           </Link>
