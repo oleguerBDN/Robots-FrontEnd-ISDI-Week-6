@@ -12,4 +12,4 @@ JEST for testing with MSW for server mocking (84% coverage)
 
 SonarQube (0 debt) 
 
-https://robotland-oleguer.netlify.app/
+Deployed in Netlify: https://robotland-oleguer.netlify.app/
